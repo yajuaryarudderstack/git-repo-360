@@ -1,0 +1,67 @@
+name: generated_project
+schema_version: 69
+connection: test
+model_folders:
+    - models
+entities:
+    - name: user
+      feature_views:
+        using_ids:
+            - id: user_id
+            - id: anonymous_id
+            - id: email
+            - id: cart_token
+            - id: user_main_id
+      hooks:
+        pre_run: ""
+        post_run: ""
+python_requirements:
+    - profiles-rudderstack==0.15.*
+packages:
+    - name: base_features
+      url: https://github.com/rudderlabs/profiles-multieventstream-features/tag/schema_{{best_schema_version}}
+      inputsMap:
+        rsIdentifies_1: inputs/rsIdentifies_1
+        rsIdentifies_2: nil
+        rsIdentifies_3: nil
+        rsPages_1: inputs/rsPages_1
+        rsPages_2: nil
+        rsPages_3: nil
+        rsTracks_1: inputs/rsTracks_1
+        rsTracks_2: nil
+        rsTracks_3: nil
+      overrides:
+        - requested_enable_status: disabled
+          models:
+            - user/all/active_days_in_past_365_days
+            - user/all/active_days_in_past_7_days
+            - user/all/avg_session_length_in_sec_365_days
+            - user/all/avg_session_length_in_sec_last_week
+            - user/all/avg_session_length_in_sec_overall
+            - user/all/campaigns_list
+            - models/churn_30_days_model
+            - models/churn_7_days_model
+            - models/churn_90_days_model
+            - user/all/country
+            - user/all/currency
+            - user/all/days_since_account_creation
+            - user/all/days_since_last_seen
+            - user/all/first_campaign_name
+            - user/all/first_name
+            - user/all/first_seen_date
+            - user/all/first_source_name
+            - user/all/is_churned_30_days
+            - user/all/is_churned_7_days
+            - user/all/is_churned_90_days
+            - user/all/last_campaign_name
+            - user/all/last_name
+            - user/all/last_seen_date
+            - user/all/last_source_name
+            - user/all/max_timestamp_bw_tracks_pages
+            - user/all/mediums_list
+            - user/all/sources_list
+            - user/all/state
+            - user/all/total_sessions_365_days
+            - user/all/total_sessions_90_days
+            - user/all/total_sessions_last_week
+            - user/all/total_sessions_till_date

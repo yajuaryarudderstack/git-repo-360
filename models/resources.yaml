@@ -1,0 +1,69 @@
+inputs:
+    - name: rsIdentifies_1
+      app_defaults:
+        table: test_simulated_data.identifies
+        occurred_at_col: timestamp
+        ids:
+            - select: user_id
+              type: user_id
+              entity: user
+              to_default_stitcher: true
+            - select: anonymous_id
+              type: anonymous_id
+              entity: user
+              to_default_stitcher: true
+            - select: lower(email)
+              type: email
+              entity: user
+              to_default_stitcher: true
+      contract:
+        is_event_stream: true
+        with_entity_ids:
+            - user
+        with_columns:
+            - name: timestamp
+            - name: user_id
+            - name: anonymous_id
+            - name: email
+    - name: rsPages_1
+      app_defaults:
+        table: test_simulated_data.pages
+        occurred_at_col: timestamp
+        ids:
+            - select: user_id
+              type: user_id
+              entity: user
+              to_default_stitcher: true
+            - select: anonymous_id
+              type: anonymous_id
+              entity: user
+              to_default_stitcher: true
+      contract:
+        is_event_stream: true
+        with_entity_ids:
+            - user
+        with_columns:
+            - name: timestamp
+            - name: user_id
+            - name: anonymous_id
+    - name: rsTracks_1
+      app_defaults:
+        table: test_simulated_data.tracks
+        occurred_at_col: timestamp
+        ids:
+            - select: user_id
+              type: user_id
+              entity: user
+              to_default_stitcher: true
+            - select: anonymous_id
+              type: anonymous_id
+              entity: user
+              to_default_stitcher: true
+      contract:
+        is_event_stream: true
+        with_entity_ids:
+            - user
+        with_columns:
+            - name: timestamp
+            - name: user_id
+            - name: anonymous_id
